@@ -2,5 +2,8 @@
 using CursoCSharp.Exercicios;
 
 var Enumumeracao = new ExplicacaoEnum();
-Enumumeracao.ExplicacaoDetalhada();
-Enumumeracao.DemonstrarEnum();
+//Enumumeracao.ExplicacaoDetalhada();
+//Enumumeracao.DemonstrarEnum();
+
+
+

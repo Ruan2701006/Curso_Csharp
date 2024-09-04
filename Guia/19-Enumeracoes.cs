@@ -58,7 +58,7 @@ namespace CursoCSharp.Guia
         // Explicação detalhada sobre enumerações
         public void ExplicacaoDetalhada()
         {
-            Console.WriteLine("** O que são Enumerações (enum)? **");
+            /*Console.WriteLine("** O que são Enumerações (enum)? **");
             Console.WriteLine("Enumerações (enums) são tipos de valor definidos pelo usuário que consistem em um conjunto de constantes nomeadas chamadas membros.");
             Console.WriteLine("Elas são usadas para representar um grupo de valores relacionados, tornando o código mais legível e fácil de manter.");
             Console.WriteLine();
@@ -84,7 +84,7 @@ namespace CursoCSharp.Guia
             Console.WriteLine("** Operações Comuns com Enums **");
             Console.WriteLine("- Atribuir e comparar valores");
             Console.WriteLine("- Converter para o valor numérico subjacente (int)");
-            Console.WriteLine("- Listar todos os valores possíveis de um enum");
+            Console.WriteLine("- Listar todos os valores possíveis de um enum");*/
         }
     }
 }

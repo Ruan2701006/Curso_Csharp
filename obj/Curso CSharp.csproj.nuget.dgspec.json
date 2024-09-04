@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Aluno Noite\\Documents\\GitHub\\Curso-CSharp-VS2022\\Curso CSharp.csproj": {}
+    "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Curso CSharp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Aluno Noite\\Documents\\GitHub\\Curso-CSharp-VS2022\\Curso CSharp.csproj": {
+    "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Curso CSharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aluno Noite\\Documents\\GitHub\\Curso-CSharp-VS2022\\Curso CSharp.csproj",
+        "projectUniqueName": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Curso CSharp.csproj",
         "projectName": "Curso CSharp",
-        "projectPath": "C:\\Users\\Aluno Noite\\Documents\\GitHub\\Curso-CSharp-VS2022\\Curso CSharp.csproj",
+        "projectPath": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Curso CSharp.csproj",
         "packagesPath": "C:\\Users\\Aluno Noite\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aluno Noite\\Documents\\GitHub\\Curso-CSharp-VS2022\\obj\\",
+        "outputPath": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Aluno Noite\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
