@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|c:\\users\\aluno noite\\desktop\\cursoc#ruan\\curso_csharp\\exercicios\\exercicio0308.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|solutionrelative:exercicios\\exercicio0308.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|c:\\users\\aluno noite\\desktop\\cursoc#ruan\\curso_csharp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|c:\\users\\aluno noite\\desktop\\cursoc#ruan\\curso_csharp\\guia\\19-enumeracoes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|solutionrelative:guia\\19-enumeracoes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|c:\\users\\aluno noite\\desktop\\cursoc#ruan\\curso_csharp\\guia\\01-entradasaidadados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|solutionrelative:guia\\01-entradasaidadados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|c:\\users\\aluno noite\\desktop\\cursoc#ruan\\curso_csharp\\exercicios\\exercicio2808.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|solutionrelative:exercicios\\exercicio2808.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|c:\\users\\aluno noite\\desktop\\cursoc#ruan\\curso_csharp\\programveiculo(parametroobjeto).cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FBDDE041-6771-4104-8C4C-151E71F63B87}|Curso CSharp.csproj|solutionrelative:programveiculo(parametroobjeto).cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,68 +18,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Exercicio0308.cs",
-              "DocumentMoniker": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Exercicios\\Exercicio0308.cs",
-              "RelativeDocumentMoniker": "Exercicios\\Exercicio0308.cs",
-              "ToolTip": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Exercicios\\Exercicio0308.cs",
-              "RelativeToolTip": "Exercicios\\Exercicio0308.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAJAAAA",
+              "DocumentIndex": 1,
+              "Title": "ProgramVeiculo(ParametroObjeto).cs",
+              "DocumentMoniker": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\ProgramVeiculo(ParametroObjeto).cs",
+              "RelativeDocumentMoniker": "ProgramVeiculo(ParametroObjeto).cs",
+              "ToolTip": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\ProgramVeiculo(ParametroObjeto).cs",
+              "RelativeToolTip": "ProgramVeiculo(ParametroObjeto).cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAAwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T19:58:04.887Z",
+              "WhenOpened": "2024-09-10T19:39:32.779Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "01-EntradaSaidaDados.cs",
-              "DocumentMoniker": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Guia\\01-EntradaSaidaDados.cs",
-              "RelativeDocumentMoniker": "Guia\\01-EntradaSaidaDados.cs",
-              "ToolTip": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Guia\\01-EntradaSaidaDados.cs",
-              "RelativeToolTip": "Guia\\01-EntradaSaidaDados.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T19:42:56.556Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAQwHIAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T19:41:28.346Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "19-Enumeracoes.cs",
-              "DocumentMoniker": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Guia\\19-Enumeracoes.cs",
-              "RelativeDocumentMoniker": "Guia\\19-Enumeracoes.cs",
-              "ToolTip": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Guia\\19-Enumeracoes.cs",
-              "RelativeToolTip": "Guia\\19-Enumeracoes.cs",
-              "ViewState": "AQIAADMAAAAAAAAAAAAowFcAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T19:40:47.527Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Exercicio2808.cs",
-              "DocumentMoniker": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Exercicios\\Exercicio2808.cs",
-              "RelativeDocumentMoniker": "Exercicios\\Exercicio2808.cs",
-              "ToolTip": "C:\\Users\\Aluno Noite\\Desktop\\CursoC#Ruan\\Curso_Csharp\\Exercicios\\Exercicio2808.cs",
-              "RelativeToolTip": "Exercicios\\Exercicio2808.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T19:39:32.217Z"
+              "WhenOpened": "2024-09-03T19:41:28.346Z",
+              "EditorCaption": ""
             }
           ]
         }
