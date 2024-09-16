@@ -1,7 +1,9 @@
-﻿using CursoCSharp;
+﻿using Curso_C_;
+using CursoCSharp;
 using CursoCSharp.Paradigmas;
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 
 /*namespace BibliotecaVeiculos
 {
@@ -350,7 +352,7 @@ gato.FazerSom();
 // Explicando o conceito de classe abstrata
 cachorro.ExplicarClasseAbstrata();*/
 
-// Criando instâncias de classes que implementam a interface
+/*// Criando instâncias de classes que implementam a interface
 IAnimal cachorro = new CachorroInter("Rex");
 IAnimal gato = new GatoInter("Mimi");
 
@@ -363,6 +365,412 @@ gato.FazerSom();
 
 // Explicando o conceito de interface
 ExplicadorDeInterface explicador = new ExplicadorDeInterface();
-explicador.ExplicarInterface();
+explicador.ExplicarInterface();*/
 
+/*var exp = new ExplicadoraDePolimorfismo();
+AnimalPoli[] animais = new AnimalPoli[3];
+animais[0] = new CachorroPoli("Rex");
+animais[1] = new GatoPoli("Mimi");
+animais[2] = new AnimalPoli("Dinossauro");
+
+foreach (AnimalPoli animal in animais)
+{
+    animal.FazerSom(); // Comportamento polimórfico
+}
+exp.ExplicarPolimorfismo();*/
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+
+namespace Marcenaria
+{
+    class Program
+    {
+        static List<Cliente> clientes = new List<Cliente>();
+        static List<Servico> servicos = new List<Servico>();
+
+        static void Main(string[] args)
+        {
+            CarregarDados();
+
+            int opcao = 0;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("==============================================");
+                Console.WriteLine("==========   SISTEMA DE MARCENARIA   ========");
+                Console.WriteLine("==============================================\n");
+                Console.WriteLine("1. Gerenciar Clientes");
+                Console.WriteLine("2. Gerenciar Serviços");
+                Console.WriteLine("0. Sair");
+
+                Console.Write("Escolha uma opção: ");
+                opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        MenuClientes();
+                        break;
+                    case 2:
+                        MenuServicos();
+                        break;
+                    case 0:
+                        SalvarDados(); // Salva dados antes de sair
+                        Console.WriteLine("\nSaindo do programa...");
+                        break;
+                    default:
+                        Console.WriteLine("\nOpção inválida, tente novamente.");
+                        break;
+                }
+            } while (opcao != 0);
+        }
+
+        static void MenuClientes()
+        {
+            int opcao = 0;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("==============================================");
+                Console.WriteLine("==========   GERENCIAR CLIENTES   ============");
+                Console.WriteLine("==============================================\n");
+                Console.WriteLine("1. Adicionar Cliente");
+                Console.WriteLine("2. Listar Clientes");
+                Console.WriteLine("3. Remover Cliente");
+                Console.WriteLine("0. Voltar");
+                Console.WriteLine("==============================================");
+                Console.Write("Escolha uma opção: ");
+                opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        AdicionarCliente();
+                        break;
+                    case 2:
+                        ListarClientes();
+                        break;
+                    case 3:
+                        RemoverCliente();
+                        break;
+                    case 0:
+                        Console.WriteLine("\nVoltando ao menu principal...");
+                        break;
+                    default:
+                        Console.WriteLine("\nOpção inválida, tente novamente.");
+                        break;
+                }
+                Console.WriteLine("\nPressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            } while (opcao != 0);
+        }
+
+        static void MenuServicos()
+        {
+            int opcao = 0;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("==============================================");
+                Console.WriteLine("==========   GERENCIAR SERVIÇOS   ============");
+                Console.WriteLine("==============================================\n");
+                Console.WriteLine("1. Adicionar Serviço");
+                Console.WriteLine("2. Listar Serviços");
+                Console.WriteLine("3. Atualizar Serviço");
+                Console.WriteLine("0. Voltar");
+                Console.WriteLine("==============================================");
+                Console.Write("Escolha uma opção: ");
+                opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        AdicionarServico();
+                        break;
+                    case 2:
+                        ListarServicos();
+                        break;
+                    case 3:
+                        AtualizarServico();
+                        break;
+                    case 0:
+                        Console.WriteLine("\nVoltando ao menu principal...");
+                        break;
+                    default:
+                        Console.WriteLine("\nOpção inválida, tente novamente.");
+                        break;
+                }
+                Console.WriteLine("\nPressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            } while (opcao != 0);
+        }
+
+        static void AdicionarCliente()
+        {
+            Console.Clear();
+            Console.WriteLine("==============================================");
+            Console.WriteLine("=========   ADICIONAR NOVO CLIENTE   =========");
+            Console.WriteLine("==============================================");
+            Console.Write("Digite o nome do cliente: ");
+            string nome = Console.ReadLine();
+            Console.Write("Digite o CPF do cliente: ");
+            string cpf = Console.ReadLine();
+
+            // Verificar se o CPF já existe
+            if (clientes.Any(c => c.Cpf == cpf))
+            {
+                Console.WriteLine("\nCliente com este CPF já existe.");
+                return;
+            }
+
+            Cliente cliente = new Cliente(nome, cpf);
+            clientes.Add(cliente);
+            Console.WriteLine("\nCliente adicionado com sucesso!");
+
+            // Atualizar o arquivo JSON
+            SalvarClientes();
+        }
+
+        static void ListarClientes()
+        {
+            Console.WriteLine("==============================================");
+            Console.WriteLine("=========   LISTA DE CLIENTES CADASTRADOS   =========");
+            Console.WriteLine("==============================================");
+
+            if (clientes.Count == 0)
+            {
+                Console.WriteLine("\nNenhum cliente cadastrado.");
+            }
+            else
+            {
+                for (int i = 0; i < clientes.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {clientes[i].Nome} - CPF: {clientes[i].Cpf}");
+                }
+            }
+        }
+
+        static void RemoverCliente()
+        {
+            ListarClientes();
+            Console.Write("\nDigite o número do cliente a ser removido: ");
+            int indice = int.Parse(Console.ReadLine()) - 1;
+
+            if (indice >= 0 && indice < clientes.Count)
+            {
+                clientes.RemoveAt(indice);
+                Console.WriteLine("\nCliente removido com sucesso!");
+                SalvarClientes(); // Atualiza o arquivo após remoção
+            }
+            else
+            {
+                Console.WriteLine("\nNúmero inválido.");
+            }
+        }
+
+        static void AdicionarServico()
+        {
+            Console.Clear();
+            Console.WriteLine("==============================================");
+            Console.WriteLine("=========   ADICIONAR NOVO SERVIÇO   =========");
+            Console.WriteLine("==============================================");
+            Console.Write("Digite a descrição do serviço: ");
+            string descricao = Console.ReadLine();
+            Console.Write("Digite o valor do serviço: ");
+            decimal valor = decimal.Parse(Console.ReadLine());
+
+            Servico servico = new Servico(descricao, valor);
+            servicos.Add(servico);
+            Console.WriteLine("\nServiço adicionado com sucesso!");
+            SalvarServicos(); // Atualiza o arquivo após adicionar serviço
+        }
+
+        static void ListarServicos()
+        {
+            Console.WriteLine("==============================================");
+            Console.WriteLine("=========   LISTA DE SERVIÇOS CADASTRADOS   =========");
+            Console.WriteLine("==============================================");
+
+            if (servicos.Count == 0)
+            {
+                Console.WriteLine("\nNenhum serviço cadastrado.");
+            }
+            else
+            {
+                for (int i = 0; i < servicos.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {servicos[i].Descricao} - Valor: {servicos[i].Valor:C}");
+                }
+            }
+        }
+
+        static void AtualizarServico()
+        {
+            ListarServicos();
+            Console.Write("\nDigite o número do serviço a ser atualizado: ");
+            int indice = int.Parse(Console.ReadLine()) - 1;
+
+            if (indice >= 0 && indice < servicos.Count)
+            {
+                Console.Write("Digite a nova descrição do serviço: ");
+                string descricao = Console.ReadLine();
+                Console.Write("Digite o novo valor do serviço: ");
+                decimal valor = decimal.Parse(Console.ReadLine());
+
+                servicos[indice] = new Servico(descricao, valor);
+                Console.WriteLine("\nServiço atualizado com sucesso!");
+                SalvarServicos(); // Atualiza o arquivo após atualização
+            }
+            else
+            {
+                Console.WriteLine("\nNúmero inválido.");
+            }
+        }
+
+        static void CarregarDados()
+        {
+            // Carregar clientes
+            string caminhoClientes = @"C:\Users\Aluno Noite\Desktop\Marcenaria\Clientes.json";
+            if (File.Exists(caminhoClientes))
+            {
+                string json = File.ReadAllText(caminhoClientes);
+                try
+                {
+                    var dados = JsonSerializer.Deserialize<Dados>(json);
+                    if (dados != null)
+                    {
+                        clientes = dados.Clientes;
+                        Console.WriteLine("Clientes carregados com sucesso.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Dados carregados são nulos.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro ao desserializar o JSON dos clientes: {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Arquivo JSON de clientes não encontrado.");
+            }
+
+            // Carregar serviços
+            string caminhoServicos = @"C:\Users\Aluno Noite\Desktop\Marcenaria\Servicos.json";
+            if (File.Exists(caminhoServicos))
+            {
+                string json = File.ReadAllText(caminhoServicos);
+                try
+                {
+                    var dados = JsonSerializer.Deserialize<Dados>(json);
+                    if (dados != null)
+                    {
+                        servicos = dados.Servicos;
+                        Console.WriteLine("Serviços carregados com sucesso.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Dados carregados são nulos.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro ao desserializar o JSON dos serviços: {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Arquivo JSON de serviços não encontrado.");
+            }
+        }
+
+        static void SalvarClientes()
+        {
+            string caminhoArquivo = @"C:\Users\Aluno Noite\Desktop\CursoC#Ruan\Curso_Csharp\Usuarios.json";
+
+            try
+            {
+                var dados = new Dados
+                {
+                    Clientes = clientes,
+                    Servicos = new List<Servico>() // Lista vazia
+                };
+
+                string json = JsonSerializer.Serialize(dados, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(caminhoArquivo, json);
+
+                Console.WriteLine("Clientes salvos com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao salvar clientes: {ex.Message}");
+            }
+        }
+
+        static void SalvarServicos()
+        {
+            string caminhoArquivo = @"C:\Users\Aluno Noite\Desktop\CursoC#Ruan\Curso_Csharp\livros.json";
+
+            try
+            {
+                var dados = new Dados
+                {
+                    Clientes = new List<Cliente>(), // Lista vazia
+                    Servicos = servicos
+                };
+
+                string json = JsonSerializer.Serialize(dados, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(caminhoArquivo, json);
+
+                Console.WriteLine("Serviços salvos com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao salvar serviços: {ex.Message}");
+            }
+        }
+
+        static void SalvarDados()
+        {
+            SalvarClientes();
+            SalvarServicos();
+        }
+    }
+
+    public class Dados
+    {
+        public List<Cliente> Clientes { get; set; }
+        public List<Servico> Servicos { get; set; }
+    }
+
+    public class Cliente
+    {
+        public string Nome { get; set; }
+        public string Cpf { get; set; }
+
+        public Cliente(string nome, string cpf)
+        {
+            Nome = nome;
+            Cpf = cpf;
+        }
+    }
+
+    public class Servico
+    {
+        public string Descricao { get; set; }
+        public decimal Valor { get; set; }
+
+        public Servico(string descricao, decimal valor)
+        {
+            Descricao = descricao;
+            Valor = valor;
+        }
+    }
+}
 
