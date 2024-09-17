@@ -4,115 +4,61 @@ using System.Linq;
 
 namespace Curso_C_
 {
-    // Classe Livro
-    public class Livro
+    public class Dados
     {
-        public string Titulo { get; set; }
-        public string Autor { get; set; }
-        public int Ano { get; set; }
-        public int Paginas { get; set; }
-
-        public Livro() { } // Construtor padrão necessário para deserialização
-
-        public Livro(string titulo, string autor, int ano, int paginas)
-        {
-            Titulo = titulo;
-            Autor = autor;
-            Ano = ano;
-            Paginas = paginas;
-        }
-
-        public void ExibirDetalhes()
-        {
-            Console.WriteLine($"Título: {Titulo}, Autor: {Autor}, Ano: {Ano}, Páginas: {Paginas}");
-        }
+        public List<Cliente> Clientes { get; set; }
+        public List<Servico> Servicos { get; set; }
     }
 
-    // Classe Biblioteca
-    public class Biblioteca
+    public class Cliente
     {
-        private List<Livro> acervo = new List<Livro>();
-
-        public void AdicionarLivro(Livro livro)
-        {
-            acervo.Add(livro);
-        }
-
-        public void RemoverLivro(Livro livro)
-        {
-            acervo.Remove(livro);
-        }
-
-        public Livro BuscarLivroPorTitulo(string titulo)
-        {
-            return acervo.FirstOrDefault(livro => livro.Titulo == titulo);
-        }
-
-        public List<Livro> ObterLivros()
-        {
-            return new List<Livro>(acervo);
-        }
-    }
-
-    // Classe Usuario
-    public class Usuario
-    {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Cpf { get; set; }
-        public List<Livro> LivrosEmprestados { get; set; } = new List<Livro>();
 
-        public Usuario() { } // Construtor padrão necessário para deserialização
-
-        public Usuario(string nome, string cpf)
+        public Cliente(int id, string nome, string cpf)
         {
+            Id = id;
             Nome = nome;
             Cpf = cpf;
         }
+    }
 
-        public void EmprestarLivro(Livro livro, Biblioteca biblioteca)
-        {
-            Livro livroEmprestado = biblioteca.BuscarLivroPorTitulo(livro.Titulo);
-            if (livroEmprestado != null)
-            {
-                LivrosEmprestados.Add(livroEmprestado);
-                biblioteca.RemoverLivro(livroEmprestado);
-                Console.WriteLine($"{Nome} emprestou o livro '{livro.Titulo}'.");
-            }
-        }
+    public class Servico
+    {
+        public string Descricao { get; set; }
+        public decimal Valor { get; set; }
+        public int Id { get; set; }
 
-        public void DevolverLivro(Livro livro, Biblioteca biblioteca)
-        {
-            if (LivrosEmprestados.Contains(livro))
-            {
-                LivrosEmprestados.Remove(livro);
-                biblioteca.AdicionarLivro(livro);
-                Console.WriteLine($"{Nome} devolveu o livro '{livro.Titulo}'.");
-            }
-        }
 
-        public void ExibirLivrosEmprestados()
+        public Servico(string descricao, decimal valor, int id)
         {
-            Console.WriteLine($"Livros emprestados por {Nome}:");
-            foreach (var livro in LivrosEmprestados)
-            {
-                livro.ExibirDetalhes();
-            }
+            Descricao = descricao;
+            Valor = valor;
+            Id = id;
         }
     }
 
-    // Classe Emprestimo
-    public class Emprestimo
+    public class Agendamento
     {
-        public string UsuarioCpf { get; set; }
-        public string LivroTitulo { get; set; }
-        public DateTime DataEmprestimo { get; set; }
+        public Cliente Cliente { get; set; }
+        public Servico Servico { get; set; }
+        public DateTime Data { get; set; }
+        public TimeSpan Hora { get; set; }
+        public string Local { get; set; }
+
+        public Agendamento(Cliente cliente, Servico servico, DateTime data, TimeSpan hora, string local)
+        {
+            Cliente = cliente;
+            Servico = servico;
+            Data = data;
+            Hora = hora;
+            Local = local;
+        }
     }
 
-    // Classe Dados para deserialização
-    public class Dados
+    public class DadosAgendamento
     {
-        public List<Usuario> Usuarios { get; set; }
-        public List<Livro> Livros { get; set; }
-        public List<Emprestimo> Emprestimos { get; set; }
+        public List<Agendamento> Agendamentos { get; set; }
     }
 }

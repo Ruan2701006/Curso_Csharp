@@ -379,18 +379,14 @@ foreach (AnimalPoli animal in animais)
 }
 exp.ExplicarPolimorfismo();*/
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-
 namespace Marcenaria
 {
     class Program
     {
         static List<Cliente> clientes = new List<Cliente>();
         static List<Servico> servicos = new List<Servico>();
+        static List<Agendamento> agendamentos = new List<Agendamento>();
+        static int ultimoIdCliente = 1;
 
         static void Main(string[] args)
         {
@@ -401,10 +397,11 @@ namespace Marcenaria
             {
                 Console.Clear();
                 Console.WriteLine("==============================================");
-                Console.WriteLine("==========   SISTEMA DE MARCENARIA   ========");
+                Console.WriteLine("==========   SISTEMA DE MARCENARIA   =========");
                 Console.WriteLine("==============================================\n");
                 Console.WriteLine("1. Gerenciar Clientes");
                 Console.WriteLine("2. Gerenciar Serviços");
+                Console.WriteLine("3. Gerenciar Agendamentos");
                 Console.WriteLine("0. Sair");
 
                 Console.Write("Escolha uma opção: ");
@@ -417,6 +414,9 @@ namespace Marcenaria
                         break;
                     case 2:
                         MenuServicos();
+                        break;
+                    case 3:
+                        MenuAgendamentos();
                         break;
                     case 0:
                         SalvarDados(); // Salva dados antes de sair
@@ -440,9 +440,9 @@ namespace Marcenaria
                 Console.WriteLine("==============================================\n");
                 Console.WriteLine("1. Adicionar Cliente");
                 Console.WriteLine("2. Listar Clientes");
-                Console.WriteLine("3. Remover Cliente");
+                Console.WriteLine("3. Remover Cliente por ID");
+                Console.WriteLine("4. Atualizar Cliente por ID");
                 Console.WriteLine("0. Voltar");
-                Console.WriteLine("==============================================");
                 Console.Write("Escolha uma opção: ");
                 opcao = int.Parse(Console.ReadLine());
 
@@ -455,7 +455,10 @@ namespace Marcenaria
                         ListarClientes();
                         break;
                     case 3:
-                        RemoverCliente();
+                        RemoverClientePorId();
+                        break;
+                    case 4:
+                        AtualizarClientePorId();
                         break;
                     case 0:
                         Console.WriteLine("\nVoltando ao menu principal...");
@@ -482,7 +485,6 @@ namespace Marcenaria
                 Console.WriteLine("2. Listar Serviços");
                 Console.WriteLine("3. Atualizar Serviço");
                 Console.WriteLine("0. Voltar");
-                Console.WriteLine("==============================================");
                 Console.Write("Escolha uma opção: ");
                 opcao = int.Parse(Console.ReadLine());
 
@@ -509,6 +511,45 @@ namespace Marcenaria
             } while (opcao != 0);
         }
 
+        static void MenuAgendamentos()
+        {
+            int opcao = 0;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("==============================================");
+                Console.WriteLine("=========   GERENCIAR AGENDAMENTOS  ==========");
+                Console.WriteLine("==============================================\n");
+                Console.WriteLine("1. Agendar Serviço");
+                Console.WriteLine("2. Listar Agendamentos");
+                Console.WriteLine("3. Remover Agendamento");
+                Console.WriteLine("0. Voltar");
+                Console.Write("Escolha uma opção: ");
+                opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        AgendarServico();
+                        break;
+                    case 2:
+                        ListarAgendamentos();
+                        break;
+                    case 3:
+                        RemoverAgendamento();
+                        break;
+                    case 0:
+                        Console.WriteLine("\nVoltando ao menu principal...");
+                        break;
+                    default:
+                        Console.WriteLine("\nOpção inválida, tente novamente.");
+                        break;
+                }
+                Console.WriteLine("\nPressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            } while (opcao != 0);
+        }
+
         static void AdicionarCliente()
         {
             Console.Clear();
@@ -519,6 +560,15 @@ namespace Marcenaria
             string nome = Console.ReadLine();
             Console.Write("Digite o CPF do cliente: ");
             string cpf = Console.ReadLine();
+            Console.Write("Digite o ID do cliente: ");
+            int id = int.Parse(Console.ReadLine());
+
+            // Verificar se o ID já existe
+            if (clientes.Any(c => c.Id == id))
+            {
+                Console.WriteLine("\nCliente com este ID já existe.");
+                return;
+            }
 
             // Verificar se o CPF já existe
             if (clientes.Any(c => c.Cpf == cpf))
@@ -527,7 +577,7 @@ namespace Marcenaria
                 return;
             }
 
-            Cliente cliente = new Cliente(nome, cpf);
+            Cliente cliente = new Cliente(id, nome, cpf);
             clientes.Add(cliente);
             Console.WriteLine("\nCliente adicionado com sucesso!");
 
@@ -537,9 +587,9 @@ namespace Marcenaria
 
         static void ListarClientes()
         {
-            Console.WriteLine("==============================================");
+            Console.WriteLine("=====================================================");
             Console.WriteLine("=========   LISTA DE CLIENTES CADASTRADOS   =========");
-            Console.WriteLine("==============================================");
+            Console.WriteLine("=====================================================");
 
             if (clientes.Count == 0)
             {
@@ -547,28 +597,64 @@ namespace Marcenaria
             }
             else
             {
-                for (int i = 0; i < clientes.Count; i++)
+                foreach (var cliente in clientes)
                 {
-                    Console.WriteLine($"{i + 1}. {clientes[i].Nome} - CPF: {clientes[i].Cpf}");
+                    Console.WriteLine($"ID: {cliente.Id} - Nome: {cliente.Nome} - CPF: {cliente.Cpf}");
                 }
             }
         }
 
-        static void RemoverCliente()
+        static void RemoverClientePorId()
         {
             ListarClientes();
-            Console.Write("\nDigite o número do cliente a ser removido: ");
-            int indice = int.Parse(Console.ReadLine()) - 1;
+            Console.Write("\nDigite o ID do cliente a ser removido: ");
+            int id = int.Parse(Console.ReadLine());
 
-            if (indice >= 0 && indice < clientes.Count)
+            Cliente cliente = clientes.FirstOrDefault(c => c.Id == id);
+
+            if (cliente != null)
             {
-                clientes.RemoveAt(indice);
+                clientes.Remove(cliente);
                 Console.WriteLine("\nCliente removido com sucesso!");
                 SalvarClientes(); // Atualiza o arquivo após remoção
             }
             else
             {
-                Console.WriteLine("\nNúmero inválido.");
+                Console.WriteLine("\nID inválido.");
+            }
+        }
+
+        static void AtualizarClientePorId()
+        {
+            ListarClientes();
+            Console.Write("\nDigite o ID do cliente a ser atualizado: ");
+            int id = int.Parse(Console.ReadLine());
+
+            Cliente cliente = clientes.FirstOrDefault(c => c.Id == id);
+
+            if (cliente != null)
+            {
+                Console.Write("Digite o novo nome do cliente: ");
+                string nome = Console.ReadLine();
+                Console.Write("Digite o novo CPF do cliente: ");
+                string cpf = Console.ReadLine();
+
+                // Verificar se o novo CPF já está em uso por outro cliente
+                if (clientes.Any(c => c.Cpf == cpf && c.Id != id))
+                {
+                    Console.WriteLine("\nOutro cliente já está utilizando este CPF.");
+                    return;
+                }
+
+                cliente.Nome = nome;
+                cliente.Cpf = cpf;
+                Console.WriteLine("\nCliente atualizado com sucesso!");
+
+                SalvarClientes(); // Atualiza o arquivo após a atualização
+            }
+            else
+            {
+                Console.WriteLine("\nID inválido.");
             }
         }
 
@@ -586,14 +672,16 @@ namespace Marcenaria
             Servico servico = new Servico(descricao, valor);
             servicos.Add(servico);
             Console.WriteLine("\nServiço adicionado com sucesso!");
-            SalvarServicos(); // Atualiza o arquivo após adicionar serviço
+
+            // Atualizar arquivo JSON
+            SalvarServicos();
         }
 
         static void ListarServicos()
         {
-            Console.WriteLine("==============================================");
+            Console.WriteLine("=====================================================");
             Console.WriteLine("=========   LISTA DE SERVIÇOS CADASTRADOS   =========");
-            Console.WriteLine("==============================================");
+            Console.WriteLine("=====================================================");
 
             if (servicos.Count == 0)
             {
@@ -603,7 +691,8 @@ namespace Marcenaria
             {
                 for (int i = 0; i < servicos.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}. {servicos[i].Descricao} - Valor: {servicos[i].Valor:C}");
+                    var servico = servicos[i];
+                    Console.WriteLine($"{i + 1}. Descrição: {servico.Descricao} - Valor: {servico.Valor:C}");
                 }
             }
         }
@@ -616,14 +705,14 @@ namespace Marcenaria
 
             if (indice >= 0 && indice < servicos.Count)
             {
+                var servico = servicos[indice];
                 Console.Write("Digite a nova descrição do serviço: ");
-                string descricao = Console.ReadLine();
+                servico.Descricao = Console.ReadLine();
                 Console.Write("Digite o novo valor do serviço: ");
-                decimal valor = decimal.Parse(Console.ReadLine());
+                servico.Valor = decimal.Parse(Console.ReadLine());
 
-                servicos[indice] = new Servico(descricao, valor);
                 Console.WriteLine("\nServiço atualizado com sucesso!");
-                SalvarServicos(); // Atualiza o arquivo após atualização
+                SalvarServicos(); // Atualiza o arquivo após a atualização
             }
             else
             {
@@ -631,80 +720,98 @@ namespace Marcenaria
             }
         }
 
-        static void CarregarDados()
+        static void AgendarServico()
         {
-            // Carregar clientes
-            string caminhoClientes = @"C:\Users\Aluno Noite\Desktop\Marcenaria\Clientes.json";
-            if (File.Exists(caminhoClientes))
+            Console.Clear();
+            Console.WriteLine("==============================================");
+            Console.WriteLine("==========   AGENDAR NOVO SERVIÇO   ==========");
+            Console.WriteLine("==============================================");
+
+            // Listar clientes
+            ListarClientes();
+            Console.Write("Digite o ID do cliente para agendar o serviço: ");
+            int idCliente = int.Parse(Console.ReadLine());
+            Cliente cliente = clientes.FirstOrDefault(c => c.Id == idCliente);
+            if (cliente == null)
             {
-                string json = File.ReadAllText(caminhoClientes);
-                try
-                {
-                    var dados = JsonSerializer.Deserialize<Dados>(json);
-                    if (dados != null)
-                    {
-                        clientes = dados.Clientes;
-                        Console.WriteLine("Clientes carregados com sucesso.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Dados carregados são nulos.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Erro ao desserializar o JSON dos clientes: {ex.Message}");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Arquivo JSON de clientes não encontrado.");
+                Console.WriteLine("Cliente não encontrado.");
+                return;
             }
 
-            // Carregar serviços
-            string caminhoServicos = @"C:\Users\Aluno Noite\Desktop\Marcenaria\Servicos.json";
-            if (File.Exists(caminhoServicos))
+            // Listar serviços
+            ListarServicos();
+            Console.Write("Digite o número do serviço a ser agendado: ");
+            int numeroServico = int.Parse(Console.ReadLine()) - 1;
+            if (numeroServico < 0 || numeroServico >= servicos.Count)
             {
-                string json = File.ReadAllText(caminhoServicos);
-                try
-                {
-                    var dados = JsonSerializer.Deserialize<Dados>(json);
-                    if (dados != null)
-                    {
-                        servicos = dados.Servicos;
-                        Console.WriteLine("Serviços carregados com sucesso.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Dados carregados são nulos.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Erro ao desserializar o JSON dos serviços: {ex.Message}");
-                }
+                Console.WriteLine("Serviço inválido.");
+                return;
+            }
+            Servico servico = servicos[numeroServico];
+
+            // Capturar data, hora e local do agendamento
+            Console.Write("Digite a data do agendamento (formato dd/MM/yyyy): ");
+            DateTime data = DateTime.Parse(Console.ReadLine());
+            Console.Write("Digite a hora do agendamento (formato HH:mm): ");
+            TimeSpan hora = TimeSpan.Parse(Console.ReadLine());
+            Console.Write("Digite o local do agendamento: ");
+            string local = Console.ReadLine();
+
+            Agendamento agendamento = new Agendamento(cliente, servico, data, hora, local);
+            agendamentos.Add(agendamento);
+
+            Console.WriteLine("\nServiço agendado com sucesso!");
+
+            // Atualizar arquivo de agendamentos
+            SalvarAgendamentos();
+        }
+
+        static void ListarAgendamentos()
+        {
+            Console.WriteLine("=====================================================");
+            Console.WriteLine("=========   LISTA DE AGENDAMENTOS CADASTRADOS   =====");
+            Console.WriteLine("=====================================================");
+
+            if (agendamentos.Count == 0)
+            {
+                Console.WriteLine("\nNenhum agendamento cadastrado.");
             }
             else
             {
-                Console.WriteLine("Arquivo JSON de serviços não encontrado.");
+                foreach (var agendamento in agendamentos)
+                {
+                    Console.WriteLine($"Cliente: {agendamento.Cliente.Nome} - Serviço: {agendamento.Servico.Descricao} - " +
+                                      $"Data: {agendamento.Data.ToString("dd/MM/yyyy")} - Hora: {agendamento.Hora} - Local: {agendamento.Local}");
+                }
+            }
+        }
+
+        static void RemoverAgendamento()
+        {
+            ListarAgendamentos();
+            Console.Write("\nDigite o número do agendamento a ser removido: ");
+            int indice = int.Parse(Console.ReadLine()) - 1;
+
+            if (indice >= 0 && indice < agendamentos.Count)
+            {
+                agendamentos.RemoveAt(indice);
+                Console.WriteLine("\nAgendamento removido com sucesso!");
+                SalvarAgendamentos();
+            }
+            else
+            {
+                Console.WriteLine("\nNúmero inválido.");
             }
         }
 
         static void SalvarClientes()
         {
-            string caminhoArquivo = @"C:\Users\Aluno Noite\Desktop\CursoC#Ruan\Curso_Csharp\Usuarios.json";
-
+            string caminhoArquivo = @"C:\Users\Aluno Noite\Desktop\CursoC#Ruan\Curso_Csharp\Clientes.json";
             try
             {
-                var dados = new Dados
-                {
-                    Clientes = clientes,
-                    Servicos = new List<Servico>() // Lista vazia
-                };
-
+                var dados = new Dados { Clientes = clientes, Servicos = servicos };
                 string json = JsonSerializer.Serialize(dados, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(caminhoArquivo, json);
-
                 Console.WriteLine("Clientes salvos com sucesso.");
             }
             catch (Exception ex)
@@ -715,19 +822,12 @@ namespace Marcenaria
 
         static void SalvarServicos()
         {
-            string caminhoArquivo = @"C:\Users\Aluno Noite\Desktop\CursoC#Ruan\Curso_Csharp\livros.json";
-
+            string caminhoArquivo = @"C:\Users\Aluno Noite\Desktop\CursoC#Ruan\Curso_Csharp\Servicos.json";
             try
             {
-                var dados = new Dados
-                {
-                    Clientes = new List<Cliente>(), // Lista vazia
-                    Servicos = servicos
-                };
-
+                var dados = new Dados { Clientes = clientes, Servicos = servicos };
                 string json = JsonSerializer.Serialize(dados, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(caminhoArquivo, json);
-
                 Console.WriteLine("Serviços salvos com sucesso.");
             }
             catch (Exception ex)
@@ -736,41 +836,101 @@ namespace Marcenaria
             }
         }
 
+        static void SalvarAgendamentos()
+        {
+            string caminhoArquivo = @"C:\Users\Aluno Noite\Desktop\CursoC#Ruan\Curso_Csharp\Agendamentos.json";
+            try
+            {
+                var dados = new DadosAgendamento { Agendamentos = agendamentos };
+                string json = JsonSerializer.Serialize(dados, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(caminhoArquivo, json);
+                Console.WriteLine("Agendamentos salvos com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao salvar agendamentos: {ex.Message}");
+            }
+        }
+
+        static void CarregarDados()
+        {
+            CarregarClientes();
+            CarregarServicos();
+            CarregarAgendamentos();
+        }
+
+        static void CarregarClientes()
+        {
+            string caminhoArquivo = @"C:\Users\Aluno Noite\Desktop\CursoC#Ruan\Curso_Csharp\Clientes.json";
+            if (File.Exists(caminhoArquivo))
+            {
+                string json = File.ReadAllText(caminhoArquivo);
+                try
+                {
+                    var dados = JsonSerializer.Deserialize<Dados>(json);
+                    if (dados != null)
+                    {
+                        clientes = dados.Clientes;
+                        servicos = dados.Servicos;
+                        ultimoIdCliente = clientes.Any() ? clientes.Max(c => c.Id) + 1 : 1;
+                        Console.WriteLine("Clientes carregados com sucesso.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro ao carregar clientes: {ex.Message}");
+                }
+            }
+        }
+
+        static void CarregarServicos()
+        {
+            string caminhoArquivo = @"C:\Users\Aluno Noite\Desktop\CursoC#Ruan\Curso_Csharp\Servicos.json";
+            if (File.Exists(caminhoArquivo))
+            {
+                string json = File.ReadAllText(caminhoArquivo);
+                try
+                {
+                    var dados = JsonSerializer.Deserialize<Dados>(json);
+                    if (dados != null)
+                    {
+                        servicos = dados.Servicos;
+                        Console.WriteLine("Serviços carregados com sucesso.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro ao carregar serviços: {ex.Message}");
+                }
+            }
+        }
+
+        static void CarregarAgendamentos()
+        {
+            string caminhoArquivo = @"C:\Users\Aluno Noite\Desktop\CursoC#Ruan\Curso_Csharp\Agendamentos.json";
+            if (File.Exists(caminhoArquivo))
+            {
+                string json = File.ReadAllText(caminhoArquivo);
+                try
+                {
+                    var dados = JsonSerializer.Deserialize<DadosAgendamento>(json);
+                    if (dados != null)
+                    {
+                        agendamentos = dados.Agendamentos;
+                        Console.WriteLine("Agendamentos carregados com sucesso.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro ao carregar agendamentos: {ex.Message}");
+                }
+            }
+        }
         static void SalvarDados()
         {
             SalvarClientes();
             SalvarServicos();
-        }
-    }
-
-    public class Dados
-    {
-        public List<Cliente> Clientes { get; set; }
-        public List<Servico> Servicos { get; set; }
-    }
-
-    public class Cliente
-    {
-        public string Nome { get; set; }
-        public string Cpf { get; set; }
-
-        public Cliente(string nome, string cpf)
-        {
-            Nome = nome;
-            Cpf = cpf;
-        }
-    }
-
-    public class Servico
-    {
-        public string Descricao { get; set; }
-        public decimal Valor { get; set; }
-
-        public Servico(string descricao, decimal valor)
-        {
-            Descricao = descricao;
-            Valor = valor;
+            SalvarAgendamentos();
         }
     }
 }
-

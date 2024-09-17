@@ -1,0 +1,15 @@
+{
+  "Clientes": [
+    {
+      "Id": 20,
+      "Nome": "predo",
+      "Cpf": "02930293"
+    }
+  ],
+  "Servicos": [
+    {
+      "Descricao": "obra",
+      "Valor": 20000
+    }
+  ]
+}
