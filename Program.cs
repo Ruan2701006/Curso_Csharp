@@ -396,15 +396,30 @@ namespace Marcenaria
             do
             {
                 Console.Clear();
-                Console.WriteLine("==============================================");
-                Console.WriteLine("==========   SISTEMA DE MARCENARIA   =========");
-                Console.WriteLine("==============================================\n");
-                Console.WriteLine("1. Gerenciar Clientes");
-                Console.WriteLine("2. Gerenciar Serviços");
-                Console.WriteLine("3. Gerenciar Agendamentos");
-                Console.WriteLine("0. Sair");
-
-                Console.Write("Escolha uma opção: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine("║             SISTEMA DE MARCENARIA            ║");
+                Console.WriteLine("╚══════════════════════════════════════════════╝");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine("║            Autor do Sistema : Ruan           ║");
+                Console.WriteLine("║            Versão do Sistema : 1.0           ║");
+                Console.WriteLine("╚══════════════════════════════════════════════╝");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine($"║         Data e Hora: {DateTime.Now.ToString("dd/MM/yyyy HH:mm        ║")}");
+                Console.WriteLine("╚══════════════════════════════════════════════╝\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("╔═════════════════════════╗");
+                Console.WriteLine("║1. Gerenciar Clientes    ║");
+                Console.WriteLine("║2. Gerenciar Serviços    ║");
+                Console.WriteLine("║3. Gerenciar Agendamentos║");
+                Console.WriteLine("║0. Sair                  ║");
+                Console.WriteLine("╚═════════════════════════╝\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("╔═════════════════════════════╗");
+                Console.WriteLine("║    Escolha uma opção:       ║");
+                Console.WriteLine("╚═════════════════════════════╝");
                 opcao = int.Parse(Console.ReadLine());
 
                 switch (opcao)
@@ -435,16 +450,39 @@ namespace Marcenaria
             do
             {
                 Console.Clear();
-                Console.WriteLine("==============================================");
-                Console.WriteLine("==========   GERENCIAR CLIENTES   ============");
-                Console.WriteLine("==============================================\n");
-                Console.WriteLine("1. Adicionar Cliente");
-                Console.WriteLine("2. Listar Clientes");
-                Console.WriteLine("3. Remover Cliente por ID");
-                Console.WriteLine("4. Atualizar Cliente por ID");
-                Console.WriteLine("0. Voltar");
-                Console.Write("Escolha uma opção: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine("║          GERENCIAR CLIENTES                  ║");
+                Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine("║           Autor do Sistema : Ruan            ║");
+                Console.WriteLine("║           Versão do Sistema : 1.0            ║");
+                Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine($"║        Data e Hora: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}         ║");
+                Console.WriteLine("╚══════════════════════════════════════════════╝\n");
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("╔════════════════════════════╗");
+                Console.WriteLine("║1. Adicionar Cliente        ║");
+                Console.WriteLine("║2. Listar Clientes          ║");
+                Console.WriteLine("║3. Remover Cliente por ID   ║");
+                Console.WriteLine("║4. Atualizar Cliente por ID ║");
+                Console.WriteLine("║0. Voltar                   ║");
+                Console.WriteLine("╚════════════════════════════╝\n");
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("╔═════════════════════════════╗");
+                Console.WriteLine("║    Escolha uma opção:       ║");
+                Console.WriteLine("╚═════════════════════════════╝");
+
+                Console.ForegroundColor = ConsoleColor.White; // Resetar a cor do texto
                 opcao = int.Parse(Console.ReadLine());
+
 
                 switch (opcao)
                 {
@@ -478,15 +516,38 @@ namespace Marcenaria
             do
             {
                 Console.Clear();
-                Console.WriteLine("==============================================");
-                Console.WriteLine("==========   GERENCIAR SERVIÇOS   ============");
-                Console.WriteLine("==============================================\n");
-                Console.WriteLine("1. Adicionar Serviço");
-                Console.WriteLine("2. Listar Serviços");
-                Console.WriteLine("3. Atualizar Serviço");
-                Console.WriteLine("0. Voltar");
-                Console.Write("Escolha uma opção: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine("║          GERENCIAR SERVIÇOS                  ║");
+                Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine("║           Autor do Sistema : Ruan            ║");
+                Console.WriteLine("║           Versão do Sistema : 1.0            ║");
+                Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine($"║        Data e Hora: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}        ║");
+                Console.WriteLine("╚══════════════════════════════════════════════╝\n");
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("╔═════════════════════════╗");
+                Console.WriteLine("║1. Adicionar Serviço     ║");
+                Console.WriteLine("║2. Listar Serviços       ║");
+                Console.WriteLine("║3. Atualizar Serviço     ║");
+                Console.WriteLine("║0. Voltar                ║");
+                Console.WriteLine("╚═════════════════════════╝\n");
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("╔═════════════════════════════╗");
+                Console.WriteLine("║    Escolha uma opção:       ║");
+                Console.WriteLine("╚═════════════════════════════╝");
+
+                Console.ForegroundColor = ConsoleColor.White; // Resetar a cor do texto
                 opcao = int.Parse(Console.ReadLine());
+
 
                 switch (opcao)
                 {
@@ -517,15 +578,38 @@ namespace Marcenaria
             do
             {
                 Console.Clear();
-                Console.WriteLine("==============================================");
-                Console.WriteLine("=========   GERENCIAR AGENDAMENTOS  ==========");
-                Console.WriteLine("==============================================\n");
-                Console.WriteLine("1. Agendar Serviço");
-                Console.WriteLine("2. Listar Agendamentos");
-                Console.WriteLine("3. Remover Agendamento");
-                Console.WriteLine("0. Voltar");
-                Console.Write("Escolha uma opção: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine("║          GERENCIAR AGENDAMENTOS              ║");
+                Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine("║           Autor do Sistema : Ruan            ║");
+                Console.WriteLine("║           Versão do Sistema : 1.0            ║");
+                Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("╔══════════════════════════════════════════════╗");
+                Console.WriteLine($"║        Data e Hora: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}        ║");
+                Console.WriteLine("╚══════════════════════════════════════════════╝\n");
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("╔═════════════════════════╗");
+                Console.WriteLine("║1. Agendar Serviço       ║");
+                Console.WriteLine("║2. Listar Agendamentos   ║");
+                Console.WriteLine("║3. Remover Agendamento   ║");
+                Console.WriteLine("║0. Voltar                ║");
+                Console.WriteLine("╚═════════════════════════╝\n");
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("╔═════════════════════════════╗");
+                Console.WriteLine("║    Escolha uma opção:       ║");
+                Console.WriteLine("╚═════════════════════════════╝");
+
+                Console.ForegroundColor = ConsoleColor.White; // Resetar a cor do texto
                 opcao = int.Parse(Console.ReadLine());
+
 
                 switch (opcao)
                 {
@@ -553,21 +637,74 @@ namespace Marcenaria
         static void AdicionarCliente()
         {
             Console.Clear();
-            Console.WriteLine("==============================================");
-            Console.WriteLine("=========   ADICIONAR NOVO CLIENTE   =========");
-            Console.WriteLine("==============================================");
-            Console.Write("Digite o nome do cliente: ");
-            string nome = Console.ReadLine();
-            Console.Write("Digite o CPF do cliente: ");
-            string cpf = Console.ReadLine();
-            Console.Write("Digite o ID do cliente: ");
-            int id = int.Parse(Console.ReadLine());
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║          ADICIONAR NOVO CLIENTE              ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
 
-            // Verificar se o ID já existe
-            if (clientes.Any(c => c.Id == id))
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║           Autor do Sistema : Ruan            ║");
+            Console.WriteLine("║           Versão do Sistema : 1.0            ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine($"║        Data e Hora: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}        ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝\n");
+
+            Console.ForegroundColor = ConsoleColor.White;
+
+            // Verificar e obter o nome do cliente
+            string nome;
+            do
             {
-                Console.WriteLine("\nCliente com este ID já existe.");
-                return;
+                Console.WriteLine("Digite o nome do cliente: ");
+                nome = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(nome))
+                {
+                    Console.WriteLine("O nome não pode ser vazio. Por favor, digite um nome válido.");
+                }
+                else if (!nome.Any(char.IsLetter))
+                {
+                    Console.WriteLine("O nome deve conter pelo menos uma letra. Por favor, digite um nome válido.");
+                }
+            } while (string.IsNullOrWhiteSpace(nome) || !nome.Any(char.IsLetter));
+
+            // Verificar e obter o CPF do cliente
+            string cpf;
+            do
+            {
+                Console.WriteLine("Digite o CPF do cliente (apenas números, 11 dígitos): ");
+                cpf = Console.ReadLine();
+                if (!IsCpfValid(cpf))
+                {
+                    Console.WriteLine("CPF inválido. O CPF deve conter exatamente 11 dígitos numéricos.");
+                }
+            } while (!IsCpfValid(cpf));
+
+            // Verificar e obter o ID do cliente
+            int id;
+            while (true)
+            {
+                Console.WriteLine("Digite o ID do cliente (número inteiro positivo): ");
+                string idInput = Console.ReadLine();
+                if (int.TryParse(idInput, out id) && id > 0)
+                {
+                    // Verificar se o ID já existe
+                    if (clientes.Any(c => c.Id == id))
+                    {
+                        Console.WriteLine("Cliente com este ID já existe. Por favor, digite um ID diferente.");
+                    }
+                    else
+                    {
+                        break; // ID válido e não existente
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("ID inválido. Por favor, digite um número inteiro positivo.");
+                }
             }
 
             // Verificar se o CPF já existe
@@ -579,17 +716,49 @@ namespace Marcenaria
 
             Cliente cliente = new Cliente(id, nome, cpf);
             clientes.Add(cliente);
-            Console.WriteLine("\nCliente adicionado com sucesso!");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n╔═════════════════════════════╗");
+            Console.WriteLine("║    Dados do Cliente Adicionado    ║");
+            Console.WriteLine("╚═════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.White; // Resetar a cor do texto
 
             // Atualizar o arquivo JSON
             SalvarClientes();
         }
 
+        // Função para validar o CPF
+        static bool IsCpfValid(string cpf)
+        {
+            // Verifica se o CPF contém exatamente 11 dígitos numéricos
+            return !string.IsNullOrWhiteSpace(cpf) && cpf.Length == 11 && cpf.All(char.IsDigit);
+        }
+
+
+
+
         static void ListarClientes()
         {
-            Console.WriteLine("=====================================================");
-            Console.WriteLine("=========   LISTA DE CLIENTES CADASTRADOS   =========");
-            Console.WriteLine("=====================================================");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║       LISTA DE CLIENTES CADASTRADOS          ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║           Autor do Sistema : Ruan            ║");
+            Console.WriteLine("║           Versão do Sistema : 1.0            ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine($"║       Data e Hora Local: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}       ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝\n");
+
+            Console.ForegroundColor = ConsoleColor.White; // Resetar a cor do texto
+
+
 
             if (clientes.Count == 0)
             {
@@ -661,9 +830,24 @@ namespace Marcenaria
         static void AdicionarServico()
         {
             Console.Clear();
-            Console.WriteLine("==============================================");
-            Console.WriteLine("=========   ADICIONAR NOVO SERVIÇO   =========");
-            Console.WriteLine("==============================================");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║          ADICIONAR NOVO SERVIÇO             ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║           Autor do Sistema : Ruan            ║");
+            Console.WriteLine("║           Versão do Sistema : 1.0            ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine($"║        Data e Hora: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}        ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝\n");
+
+            Console.ForegroundColor = ConsoleColor.White; // Resetar a cor do texto
+
             Console.Write("Digite a descrição do serviço: ");
             string descricao = Console.ReadLine();
             Console.Write("Digite o valor do serviço: ");
@@ -679,9 +863,25 @@ namespace Marcenaria
 
         static void ListarServicos()
         {
-            Console.WriteLine("=====================================================");
-            Console.WriteLine("=========   LISTA DE SERVIÇOS CADASTRADOS   =========");
-            Console.WriteLine("=====================================================");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║       LISTA DE SERVIÇOS CADASTRADOS         ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║           Autor do Sistema : Ruan            ║");
+            Console.WriteLine("║           Versão do Sistema : 1.0            ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine($"║       Data e Hora: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}        ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝\n");
+
+            Console.ForegroundColor = ConsoleColor.White; // Resetar a cor do texto
+
 
             if (servicos.Count == 0)
             {
@@ -723,9 +923,25 @@ namespace Marcenaria
         static void AgendarServico()
         {
             Console.Clear();
-            Console.WriteLine("==============================================");
-            Console.WriteLine("==========   AGENDAR NOVO SERVIÇO   ==========");
-            Console.WriteLine("==============================================");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║          AGENDAR NOVO SERVIÇO               ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║           Autor do Sistema : Ruan            ║");
+            Console.WriteLine("║           Versão do Sistema : 1.0            ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine($"║        Data e Hora: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}        ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝\n");
+
+            Console.ForegroundColor = ConsoleColor.White; // Resetar a cor do texto
+
+
 
             // Listar clientes
             ListarClientes();
@@ -768,9 +984,26 @@ namespace Marcenaria
 
         static void ListarAgendamentos()
         {
-            Console.WriteLine("=====================================================");
-            Console.WriteLine("=========   LISTA DE AGENDAMENTOS CADASTRADOS   =====");
-            Console.WriteLine("=====================================================");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║       LISTA DE AGENDAMENTOS CADASTRADOS     ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║           Autor do Sistema : Ruan            ║");
+            Console.WriteLine("║           Versão do Sistema : 1.0            ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine($"║        Data e Hora: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}        ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝\n");
+
+            Console.ForegroundColor = ConsoleColor.White; // Resetar a cor do texto
+
+
 
             if (agendamentos.Count == 0)
             {

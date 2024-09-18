@@ -28,14 +28,12 @@ namespace Curso_C_
     {
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
-        public int Id { get; set; }
 
-
-        public Servico(string descricao, decimal valor, int id)
+        // Construtor que recebe descrição e valor
+        public Servico(string descricao, decimal valor)
         {
             Descricao = descricao;
             Valor = valor;
-            Id = id;
         }
     }
 

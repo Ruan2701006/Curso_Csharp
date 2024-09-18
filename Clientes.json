@@ -4,7 +4,22 @@
       "Id": 20,
       "Nome": "predo",
       "Cpf": "02930293"
+    },
+    {
+      "Id": 1,
+      "Nome": "1",
+      "Cpf": "1"
+    },
+    {
+      "Id": 78,
+      "Nome": "11",
+      "Cpf": "45"
     }
   ],
-  "Servicos": []
+  "Servicos": [
+    {
+      "Descricao": "obra",
+      "Valor": 20000
+    }
+  ]
 }
